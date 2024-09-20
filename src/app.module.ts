@@ -14,6 +14,8 @@ import { UsersModule } from "./users/users.module";
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       typePaths: ["./**/*.graphql"],
+      fieldResolverEnhancers: ["guards"],
+      context: ({ req }) => ({ req }),
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),

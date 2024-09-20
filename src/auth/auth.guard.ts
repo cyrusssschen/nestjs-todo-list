@@ -7,13 +7,16 @@ import {
 import { JwtService } from "@nestjs/jwt";
 import { Request } from "express";
 import { jwtConstants } from "./auth.constants";
+import { GqlExecutionContext } from "@nestjs/graphql";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest();
+    // graphql execution context
+    const gqlCtx = GqlExecutionContext.create(context);
+    const request = gqlCtx.getContext().req;
     const token = this.extractTokenFromHeader(request);
     if (!token) {
       throw new UnauthorizedException();
