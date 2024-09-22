@@ -33,7 +33,10 @@ $ yarn run start:dev
 # production mode
 $ yarn run start:prod
 
-# open the following url
+# swagger api
+  http://localhost:3000/api
+
+# graphql
   http://localhost:3000/graphql
 
 ```
