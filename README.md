@@ -4,6 +4,7 @@ A quick demo of running graphql with nestjs
 
 ## Prerequisites
 
+- Node.js (version >= 20)
 - Docker
 - mysql container
 
