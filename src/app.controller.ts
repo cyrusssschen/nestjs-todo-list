@@ -1,20 +1,20 @@
 import { Body, Controller, Get, Post, Query } from "@nestjs/common";
 import { AppService } from "./app.service";
-import { CreateTodoList } from "./dto/todo-list-create.dto";
-import { UpdateTodoList } from "./dto/todo-list-update.dto";
+import { CreateTodoItem } from "./dto/todo-list-create.dto";
+import { UpdateTodoItem } from "./dto/todo-list-update.dto";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post("create")
-  async createTodoList(@Body() todoItem: CreateTodoList) {
-    return this.appService.createTodoList(todoItem);
+  async createTodoList(@Body() createTodoItem: CreateTodoItem) {
+    return this.appService.createTodoList(createTodoItem);
   }
 
   @Post("update")
-  async updateTodoList(@Body() todoItem: UpdateTodoList) {
-    return this.appService.updateTodoList(todoItem);
+  async updateTodoList(@Body() updateTodoItem: UpdateTodoItem) {
+    return this.appService.updateTodoList(updateTodoItem);
   }
 
   @Get("delete")

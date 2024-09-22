@@ -1,9 +1,9 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../prisma/prisma.service";
 import { Inject, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "../auth/auth.guard";
-import { CreateTodoList } from "../dto/todo-list-create.dto";
-import { UpdateTodoList } from "../dto/todo-list-update.dto";
+import { CreateTodoItem } from "../dto/todo-list-create.dto";
+import { UpdateTodoItem } from "../dto/todo-list-update.dto";
 
 @Resolver()
 export class TodoListResolver {
@@ -28,7 +28,7 @@ export class TodoListResolver {
 
   @Mutation("createTodoItem")
   @UseGuards(AuthGuard)
-  async createTodoItem(@Args("todoItem") todoItem: CreateTodoList) {
+  async createTodoItem(@Args("todoItem") todoItem: CreateTodoItem) {
     return this.prismaService.todoItem.create({
       data: todoItem,
       select: {
@@ -41,7 +41,7 @@ export class TodoListResolver {
 
   @Mutation("updateTodoItem")
   @UseGuards(AuthGuard)
-  async updateTodoItem(@Args("todoItem") todoItem: UpdateTodoList) {
+  async updateTodoItem(@Args("todoItem") todoItem: UpdateTodoItem) {
     return this.prismaService.todoItem.update({
       where: {
         id: todoItem.id,

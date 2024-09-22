@@ -1,7 +1,7 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
-import { CreateTodoList } from './dto/todo-list-create.dto';
-import { UpdateTodoList } from './dto/todo-list-update.dto';
+import { Inject, Injectable } from "@nestjs/common";
+import { PrismaService } from "./prisma/prisma.service";
+import { CreateTodoItem } from "./dto/todo-list-create.dto";
+import { UpdateTodoItem } from "./dto/todo-list-update.dto";
 
 @Injectable()
 export class AppService {
@@ -18,9 +18,9 @@ export class AppService {
     });
   }
 
-  async createTodoList(todoItem: CreateTodoList) {
+  async createTodoList(createTodoItem: CreateTodoItem) {
     return this.prismaService.todoItem.create({
-      data: todoItem,
+      data: createTodoItem,
       select: {
         id: true,
         content: true,
@@ -29,12 +29,12 @@ export class AppService {
     });
   }
 
-  async updateTodoList(todoItem: UpdateTodoList) {
+  async updateTodoList(updateTodoItem: UpdateTodoItem) {
     return this.prismaService.todoItem.update({
       where: {
-        id: todoItem.id,
+        id: updateTodoItem.id,
       },
-      data: todoItem,
+      data: updateTodoItem,
       select: {
         id: true,
         content: true,

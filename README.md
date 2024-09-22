@@ -2,26 +2,23 @@
 
 A quick demo of running graphql with nestjs
 
-## Project setup
-
-```
-### prerequisites
+## Prerequisites
 
 - Docker
 - mysql container
+
+## Project setup
+
+```bash
+$ yarn install
 
 # create database
 
 # create `.env` file with the following env variable
 DATABASE_URL="mysql://root:[your-password]@localhost:3306/[your-dbname]"
 
-# run db migrate
+# run db migration
 $ npx prisma migrate dev --name init
-
-```
-
-```bash
-$ yarn install
 ```
 
 ## Compile and run the project
@@ -58,5 +55,4 @@ $ yarn run test:cov
 
 ## TODO
 
-- Implement authentication based on users info in `User` table
-- Unit tests
+- Add more unit tests
