@@ -26,6 +26,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post("login")
   @ApiOperation({ summary: "Sign in" })
+  @ApiResponse({ status: 200, description: "Success" })
   @ApiResponse({ status: 401, description: "Unauthorized" })
   signIn(@Body() signIn: AuthSignInDto) {
     return this.authService.signIn(signIn.username, signIn.password);
@@ -35,6 +36,8 @@ export class AuthController {
   @UseGuards(AuthGuard)
   @Get("encrypt-password")
   @ApiOperation({ summary: "Fetch encrypted password" })
+  @ApiResponse({ status: 200, description: "Success" })
+  @ApiResponse({ status: 401, description: "Unauthorized" })
   async getEncryptedPassword(@Query("password") password: string) {
     return this.authService.getEncryptedPassword(password);
   }
