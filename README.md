@@ -1,6 +1,6 @@
 ## Description
 
-A quick demo of running graphql with nestjs
+A quick demo of todo-list service built in nestjs
 
 ## Prerequisites
 

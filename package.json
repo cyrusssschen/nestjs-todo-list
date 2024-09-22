@@ -2,9 +2,19 @@
   "name": "todo-list-service",
   "version": "1.0.0",
   "description": "A simple demo of todo-list service built in nest.js",
-  "author": "Cyrus Chen",
+  "author": "Cyrus Chen<kingwinchan@gmail.com>",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyrusssschen/nestjs-todo-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cyrusssschen/nestjs-todo-list/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
