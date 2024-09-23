@@ -47,11 +47,22 @@ describe("Todo list service app controller (e2e)", () => {
   });
 
   describe("GET /query", () => {
-    it("returns a list of todo list", async () => {
+    it("should return a list of todo list", async () => {
       const { status, body } = await request(app.getHttpServer()).get("/query");
 
       expect(status).toBe(200);
       expect(body).toStrictEqual(expect.arrayContaining([todoItemShape]));
+    });
+  });
+
+  describe("DELETE /delete/:id", () => {
+    it("should remove the specific todo item", async () => {
+      const { status, body } = await request(app.getHttpServer()).delete(
+        `/delete/${todoItem.id}`
+      );
+
+      expect(status).toBe(200);
+      expect(body).toStrictEqual(todoItemShape);
     });
   });
 });

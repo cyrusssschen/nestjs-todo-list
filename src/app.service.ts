@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "./common/prisma/prisma.service";
 import { CreateTodoItem } from "./common/dto/todo-list-create.dto";
 import { UpdateTodoItem } from "./common/dto/todo-list-update.dto";
@@ -43,11 +43,16 @@ export class AppService {
     });
   }
 
-  async removeTodoList(id: number) {
-    return this.prismaService.todoItem.delete({
-      where: {
-        id,
-      },
-    });
+  async deleteTodoItem(id: number) {
+    try {
+      return this.prismaService.todoItem.delete({
+        where: {
+          id,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      throw new NotFoundException(error);
+    }
   }
 }
