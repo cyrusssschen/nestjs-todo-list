@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { PrismaService } from "../prisma/prisma.service";
 import { Inject, UseGuards } from "@nestjs/common";
-import { AuthGuard } from "../auth/auth.guard";
+import { AuthGuard } from "../../auth/auth.guard";
 import { CreateTodoItem } from "../dto/todo-list-create.dto";
 import { UpdateTodoItem } from "../dto/todo-list-update.dto";
 

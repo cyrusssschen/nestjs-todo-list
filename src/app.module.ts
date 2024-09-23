@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { PrismaService } from "./prisma/prisma.service";
+import { PrismaService } from "./common/prisma/prisma.service";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver } from "@nestjs/apollo";
-import { TodoListResolver } from "./graphql/todo-list.resolver";
+import { TodoListResolver } from "./common/graphql/todo-list.resolver";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
