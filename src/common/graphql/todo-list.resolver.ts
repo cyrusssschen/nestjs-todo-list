@@ -10,9 +10,9 @@ export class TodoListResolver {
   @Inject(PrismaService)
   private prismaService: PrismaService;
 
-  @Query("todolist")
+  @Query("getTodoList")
   @UseGuards(AuthGuard)
-  async todolist() {
+  async getTodoList() {
     return this.prismaService.todoItem.findMany();
   }
 

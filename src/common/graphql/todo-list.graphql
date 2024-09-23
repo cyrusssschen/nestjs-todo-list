@@ -13,7 +13,7 @@ input UpdateTodoItemInput {
 }
 
 type Query {
-  todolist: [TodoItem]!
+  getTodoList: [TodoItem]!
   queryById(id: Int!): TodoItem
 }
 
