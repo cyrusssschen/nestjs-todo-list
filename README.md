@@ -5,6 +5,7 @@ todo-list service built in nestjs
 ## Prerequisites
 
 - Node.js (version >= 20)
+- Yarn (version >= 1.22)
 - Docker
 - mysql container
 
