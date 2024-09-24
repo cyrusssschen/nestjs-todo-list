@@ -20,5 +20,5 @@ type Query {
 type Mutation {
   createTodoItem(todoItem: CreateTodoItemInput!): TodoItem!
   updateTodoItem(todoItem: UpdateTodoItemInput!): TodoItem!
-  removeTodoItem(id: Int!): Int
+  deleteTodoItem(id: Int!): Int
 }

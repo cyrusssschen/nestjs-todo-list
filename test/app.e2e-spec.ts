@@ -3,12 +3,12 @@ import { INestApplication } from "@nestjs/common";
 import * as request from "supertest";
 import { AppModule } from "../src/app.module";
 import { PrismaService } from "../src/common/prisma/prisma.service";
-import { CreateTodoItem } from "../src/common/dto/todo-list-create.dto";
+import { UpdateTodoItem } from "../src/common/dto/todo-list-update.dto";
 
 describe("Todo list service app controller (e2e)", () => {
   let app: INestApplication;
   let prisma: PrismaService;
-  let todoItem: CreateTodoItem;
+  let todoItem: UpdateTodoItem;
 
   const todoItemShape = expect.objectContaining({
     id: expect.any(Number),

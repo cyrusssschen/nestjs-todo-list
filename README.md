@@ -1,6 +1,6 @@
 ## Description
 
-A quick demo of todo-list service built in nestjs
+todo-list service built in nestjs
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ $ yarn run start:prod
 # swagger api
   http://localhost:3000/api
 
-# graphql
+# graphql (needs to grab valid token from /auth/login endpoint firstly)
   http://localhost:3000/graphql
 
 ```
@@ -59,4 +59,5 @@ $ yarn run test:cov
 
 ## TODO
 
+- Introduce Kafka
 - Add more unit tests
