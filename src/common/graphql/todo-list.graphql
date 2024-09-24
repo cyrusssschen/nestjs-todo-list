@@ -14,7 +14,7 @@ input UpdateTodoItemInput {
 
 type Query {
   getTodoList: [TodoItem]!
-  queryById(id: Int!): TodoItem
+  queryTodoItemById(id: Int!): TodoItem
 }
 
 type Mutation {

@@ -16,9 +16,9 @@ export class TodoListResolver {
     return this.prismaService.todoItem.findMany();
   }
 
-  @Query("queryById")
+  @Query("queryTodoItemById")
   @UseGuards(AuthGuard)
-  async queryById(@Args("id") id: number) {
+  async queryTodoItemById(@Args("id") id: number) {
     return this.prismaService.todoItem.findUnique({
       where: {
         id,

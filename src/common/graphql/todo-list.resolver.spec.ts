@@ -61,9 +61,9 @@ describe("TodoListResolver", () => {
     });
   });
 
-  describe("queryById", () => {
+  describe("queryTodoItemById", () => {
     it("should get todo item by query ID", async () => {
-      const result = await resolver.queryById(1);
+      const result = await resolver.queryTodoItemById(1);
       expect(result).toEqual(oneTodoItem);
     });
   });
