@@ -60,4 +60,3 @@ $ yarn run test:cov
 ## TODO
 
 - Introduce Kafka
-- Add more unit tests

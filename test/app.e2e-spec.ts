@@ -55,6 +55,52 @@ describe("Todo list service app controller (e2e)", () => {
     });
   });
 
+  describe("POST /create", () => {
+    it("should create the specific todo item", async () => {
+      const beforeCount = await prisma.todoItem.count();
+      const { status, body } = await request(app.getHttpServer())
+        .post("/create")
+        .send({
+          content: "create new content",
+        });
+
+      const afterCount = await prisma.todoItem.count();
+
+      expect(status).toBe(201);
+      expect(body).toStrictEqual(todoItemShape);
+      expect(afterCount - beforeCount).toBe(1);
+    });
+  });
+
+  describe("PUT /update", () => {
+    it("should update the specific todo item", async () => {
+      await request(app.getHttpServer()).post("/create").send({
+        content: "create this new content",
+      });
+
+      const { body: queryResults } = await request(app.getHttpServer()).get(
+        "/query"
+      );
+
+      const updateId =
+        Array.isArray(queryResults) && queryResults.length > 0
+          ? queryResults[queryResults.length - 1].id
+          : 99999;
+
+      const updateTodoItem = {
+        id: updateId,
+        content: `update todo item: ${updateId}`,
+      };
+
+      const { status, body } = await request(app.getHttpServer())
+        .put("/update")
+        .send(updateTodoItem);
+
+      expect(status).toBe(200);
+      expect(body).toStrictEqual(expect.objectContaining(updateTodoItem));
+    });
+  });
+
   describe("DELETE /delete/:id", () => {
     it("should remove the specific todo item", async () => {
       const { status, body } = await request(app.getHttpServer()).delete(

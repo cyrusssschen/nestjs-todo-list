@@ -50,6 +50,10 @@ describe("TodoListResolver", () => {
     resolver = module.get(TodoListResolver);
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("resolver should be defined", () => {
     expect(resolver).toBeDefined();
   });
@@ -65,6 +69,22 @@ describe("TodoListResolver", () => {
     it("should get todo item by query ID", async () => {
       const result = await resolver.queryTodoItemById(1);
       expect(result).toEqual(oneTodoItem);
+    });
+  });
+
+  describe("createTodoItem", () => {
+    it("should create new todo item", async () => {
+      const result = await resolver.createTodoItem({
+        content: oneTodoItem.content,
+      });
+      expect(result).toEqual(expect.objectContaining(oneTodoItem));
+    });
+  });
+
+  describe("updateTodoItem", () => {
+    it("should update the specific todo item", async () => {
+      const result = await resolver.updateTodoItem(oneTodoItem);
+      expect(result).toEqual(expect.objectContaining(oneTodoItem));
     });
   });
 

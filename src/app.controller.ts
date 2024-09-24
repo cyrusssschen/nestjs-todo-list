@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Param } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Param,
+} from "@nestjs/common";
 import { AppService } from "./app.service";
 import { CreateTodoItem } from "./common/dto/todo-list-create.dto";
 import { UpdateTodoItem } from "./common/dto/todo-list-update.dto";
@@ -19,7 +27,7 @@ export class AppController {
     return this.appService.createTodoList(createTodoItem);
   }
 
-  @Post("update")
+  @Put("update")
   async updateTodoList(@Body() updateTodoItem: UpdateTodoItem) {
     return this.appService.updateTodoList(updateTodoItem);
   }
