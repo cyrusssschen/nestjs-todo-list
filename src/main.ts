@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle("Todo List Service")
-    .setDescription("A simple demo of todo list service")
+    .setDescription("A simple todo list service")
     .setVersion("1.0")
     .build();
 

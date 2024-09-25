@@ -38,7 +38,7 @@ $ yarn run start:prod
 # swagger api
   http://localhost:3000/api
 
-# graphql (needs to grab valid token from /auth/login endpoint firstly)
+# graphql (needs to grab valid token from /auth/login endpoint firstly, the default expired time of token is 30mins )
   http://localhost:3000/graphql
 
 ```
