@@ -11,7 +11,6 @@ export class TodoListResolver {
   private prismaService: PrismaService;
 
   @Query("getTodoList")
-  @UseGuards(AuthGuard)
   async getTodoList() {
     return this.prismaService.todoItem.findMany();
   }
@@ -56,6 +55,7 @@ export class TodoListResolver {
   }
 
   @Mutation("deleteTodoItem")
+  @UseGuards(AuthGuard)
   async deleteTodoItem(@Args("id") id: number) {
     try {
       await this.prismaService.todoItem.delete({
