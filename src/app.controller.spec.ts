@@ -1,8 +1,8 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Test, TestingModule } from "@nestjs/testing";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
 
-describe('AppController', () => {
+describe("AppController", () => {
   let appService: AppService;
   let appController: AppController;
 
@@ -11,20 +11,20 @@ describe('AppController', () => {
     appController = new AppController(appService);
   });
 
-  describe('queryTodoList', () => {
-    it('should return an array of cats', async () => {
+  describe("query", () => {
+    it("should return an array of cats", async () => {
       const result = [
         {
           id: 1,
-          content: 'test content',
+          content: "test content",
           createTime: new Date(),
         },
       ];
       jest
-        .spyOn(appService, 'queryTodoList')
+        .spyOn(appService, "queryTodoList")
         .mockImplementation(async () => result);
 
-      expect(await appController.queryTodoList()).toBe(result);
+      expect(await appController.query()).toBe(result);
     });
   });
 });
