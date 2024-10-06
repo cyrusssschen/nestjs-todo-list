@@ -6,8 +6,8 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver } from "@nestjs/apollo";
 import { TodoListResolver } from "./common/graphql/todo-list.resolver";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
-import { AuthModule } from "./auth/auth.module";
-import { UsersModule } from "./users/users.module";
+import { AuthModule } from "./modules/auth/auth.module";
+import { UsersModule } from "./modules/users/users.module";
 
 @Module({
   imports: [

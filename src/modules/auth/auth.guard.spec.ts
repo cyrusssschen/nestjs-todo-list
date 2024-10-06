@@ -62,13 +62,13 @@ describe("AuthGuard", () => {
   });
 
   it.each(["", "Bearer "])(
-    "should throw unauthorized exception without valid token",
+    "should throw forbidden exception without valid token",
     (authorization) => {
       const context = gqlMockFactory(createRequestHeader(authorization));
 
       expect(guard.canActivate(context)).rejects.toThrow(
         expect.objectContaining({
-          status: HttpStatus.UNAUTHORIZED,
+          status: HttpStatus.FORBIDDEN,
         })
       );
     }

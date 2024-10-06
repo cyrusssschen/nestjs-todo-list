@@ -17,8 +17,13 @@ type Query {
   queryTodoItemById(id: Int!): TodoItem
 }
 
+type DeleteResult {
+  id: Int!
+  result: Boolean!
+}
+
 type Mutation {
   createTodoItem(todoItem: CreateTodoItemInput!): TodoItem!
   updateTodoItem(todoItem: UpdateTodoItemInput!): TodoItem!
-  deleteTodoItem(id: Int!): Int
+  deleteTodoItem(id: Int!): DeleteResult!
 }

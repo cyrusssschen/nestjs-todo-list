@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { PrismaService } from "../prisma/prisma.service";
 import { Inject, NotFoundException, UseGuards } from "@nestjs/common";
-import { AuthGuard } from "../../auth/auth.guard";
+import { AuthGuard } from "../../modules/auth/auth.guard";
 import { CreateTodoItem } from "../dto/todo-list-create.dto";
 import { UpdateTodoItem } from "../dto/todo-list-update.dto";
 
@@ -16,7 +16,6 @@ export class TodoListResolver {
   }
 
   @Query("queryTodoItemById")
-  @UseGuards(AuthGuard)
   async queryTodoItemById(@Args("id") id: number) {
     return this.prismaService.todoItem.findUnique({
       where: {
@@ -57,15 +56,22 @@ export class TodoListResolver {
   @Mutation("deleteTodoItem")
   @UseGuards(AuthGuard)
   async deleteTodoItem(@Args("id") id: number) {
+    let result = false;
     try {
       await this.prismaService.todoItem.delete({
         where: {
           id,
         },
       });
-      return id;
+
+      result = true;
     } catch (error) {
-      throw new NotFoundException(error);
+      console.error("delete error: ", error);
     }
+
+    return {
+      id,
+      result,
+    };
   }
 }

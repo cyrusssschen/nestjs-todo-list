@@ -1,6 +1,7 @@
 import {
   CanActivate,
   ExecutionContext,
+  ForbiddenException,
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
@@ -19,7 +20,7 @@ export class AuthGuard implements CanActivate {
     const request = gqlCtx.getContext().req;
     const token = this.extractTokenFromHeader(request);
     if (!token) {
-      throw new UnauthorizedException();
+      throw new ForbiddenException();
     }
     try {
       const payload = await this.jwtService.verifyAsync(token, {

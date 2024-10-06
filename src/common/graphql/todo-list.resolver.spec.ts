@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { TodoListResolver } from "./todo-list.resolver";
 import { PrismaService } from "../prisma/prisma.service";
-import { AuthGuard } from "../../auth/auth.guard";
+import { AuthGuard } from "../../modules/auth/auth.guard";
 
 describe("TodoListResolver", () => {
   let resolver: TodoListResolver;
@@ -89,10 +89,13 @@ describe("TodoListResolver", () => {
   });
 
   describe("deleteTodoItem", () => {
-    it("should delete the specific todo item by id", async () => {
+    it("should delete the specific todo item by id and return correct result", async () => {
       const id = oneTodoItem.id;
       const result = await resolver.deleteTodoItem(id);
-      expect(result).toEqual(id);
+      expect(result).toEqual({
+        id,
+        result: true,
+      });
     });
   });
 });
