@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { PrismaService } from "./common/prisma/prisma.service";
@@ -8,6 +8,7 @@ import { TodoListResolver } from "./common/graphql/todo-list.resolver";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/users/users.module";
+import { HttpLoggerMiddleware } from "./common/middlewares/logger.middleware";
 
 @Module({
   imports: [
@@ -25,4 +26,8 @@ import { UsersModule } from "./modules/users/users.module";
   controllers: [AppController],
   providers: [AppService, PrismaService, TodoListResolver],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(HttpLoggerMiddleware).forRoutes("*");
+  }
+}
