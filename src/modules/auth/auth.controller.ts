@@ -34,7 +34,7 @@ export class AuthController {
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
-  @Get("encrypt-password")
+  @Get("password/encrypt")
   @ApiOperation({ summary: "Fetch encrypted password" })
   @ApiResponse({ status: 200, description: "Success" })
   @ApiResponse({ status: 401, description: "Unauthorized" })

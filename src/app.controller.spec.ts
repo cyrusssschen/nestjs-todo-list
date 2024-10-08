@@ -1,4 +1,3 @@
-import { Test, TestingModule } from "@nestjs/testing";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
@@ -12,11 +11,16 @@ describe("AppController", () => {
   });
 
   describe("query", () => {
-    it("should return an array of cats", async () => {
+    it("should return an array of todo list", async () => {
       const result = [
         {
           id: 1,
-          content: "test content",
+          content: "1st test content",
+          createTime: new Date(),
+        },
+        {
+          id: 2,
+          content: "2nd test content",
           createTime: new Date(),
         },
       ];
